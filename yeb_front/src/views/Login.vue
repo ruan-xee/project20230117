@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import {postRequest} from "@/utils/api";
+
 export default {
   name: "Login",
   data(){
@@ -41,7 +43,9 @@ export default {
     submitLogin(){
       this.$refs.loginForm.validate((valid)=>{
         if (valid){
-          alert('success!')
+          postRequest("/test/t", {forms: this.forms}).then(res=>{
+            console.log(res);
+          })
         } else {
           this.$message.error('请正确输入登录信息！')
           return false;
@@ -70,6 +74,10 @@ export default {
 .loginRemember{
   text-align: left;
   margin: 0px 0px 15px 0px;
+}
+.el-form-item__content{
+  display: flex;
+  align-items: center;
 }
 
 </style>

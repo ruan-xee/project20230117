@@ -25,8 +25,8 @@ axios.interceptors.response.use(success=>{
         Message.error({message:'还没有登录呢喵( ╯□╰ )'})
         router.replace('/')
     } else {
-        if (error.response.data.message){
-            Message.error({message:error.response.data.message})
+        if (error.response.data.msg){
+            Message.error({message:error.response.data.msg})
         } else {
             Message.error({message:'未知错误！'})
         }
@@ -40,7 +40,7 @@ let base = '';
 export const postRequest=(url, params)=>{
     return axios({
         method: 'post',
-        url:`${base}${url}`,
-        data:params
+        url: `${base}${url}`,
+        data: params
     });
 }
